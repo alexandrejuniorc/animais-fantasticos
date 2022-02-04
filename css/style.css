@@ -106,6 +106,10 @@ body {
   grid-column: 2; /* está na coluna 2 */
 }
 
+.animais-lista li {
+  cursor: pointer; /* deixa clicável as imagens */
+}
+
 /* estiliza a barra de scroll */
 .animais-lista::-webkit-scrollbar {
   width: 18px;
@@ -224,4 +228,73 @@ body {
   .copy {
     margin-bottom: 0px;
   }
-} ;
+}
+
+/* some o conteúdo */
+.js .js-tabcontent section {
+  display: none;
+}
+
+/* quando clicar na imagem a classe ativo irá ser ativada */
+.js-tabcontent section.ativo {
+  display: block !important;
+  animation: show 0.5s forwards; /* forwards se não colocar ela volta pro estado inicial */
+}
+
+/* animação com css */
+/* show(mostrar) */
+@keyframes show {
+  /* from(a partir de) */
+  from {
+    opacity: 0;
+    transform: translate3d(-30px, 0, 0); /*eixo (x, y, z)*/
+  }
+  /* to(para) */
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.js .js-accordion dd {
+  display: none;
+}
+
+.js-accordion dt::after {
+  content: "⬎";
+  margin-left: 10px;
+}
+
+.js-accordion dt.ativo::after {
+  content: "⬏";
+  margin-left: 10px;
+}
+
+.js-accordion dd.ativo {
+  display: block;
+  animation: slideDown 0.5s forwards;
+}
+/* slideDown(deslize para baixo) */
+@keyframes slideDown {
+  /* from(a partir de) */
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  /* to(para) */
+  to {
+    opacity: 1;
+    max-height: 200px;
+  }
+}
+
+.js .js-scroll {
+  opacity: 0;
+  transform: translate3d(-30px, 0, 0);
+  transition: 0.3s;
+}
+
+.js .js-scroll.ativo {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
