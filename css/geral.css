@@ -1,0 +1,326 @@
+body,
+h1,
+h2,
+h3,
+ul,
+li,
+p,
+dd,
+dt,
+dl {
+  margin: 0px;
+  padding: 0px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  background: #faf6ec;
+  color: #222;
+  -webkit-font-smoothing: antialiased; /* deixa a fonte mais limpa */
+}
+
+/* para não interferir no modal caso tenha um */
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 120px minmax(300px, 800px) 1fr; /* contendo 5 colunas */
+}
+
+.menu {
+  grid-column: 3 / 5; /* da linha 3 a linha 5 do grid */
+  margin-top: 2rem; /* 2*16=32px */
+  margin-bottom: 2rem;
+  background: #fb5;
+}
+
+.menu ul {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.menu li a {
+  display: block;
+  padding: 10px;
+  margin-right: 10px;
+  color: #222;
+  text-decoration: none;
+  font-family: "IBM Plex Mono", monospace; /* 'IBM Plex Mono' */
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+}
+
+.grid-section {
+  grid-column: 2/4; /* da linha 2 a linha 4 do grid */
+  width: 100%;
+  box-sizing: border-box; /* evita que grude na ponta da página e tenha um padding de 10px */
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 90px 300px 1fr;
+  grid-gap: 20px;
+  margin-bottom: 4rem;
+}
+
+.titulo {
+  font-family: "Playfair Display SC", georgia;
+  font-size: 6rem /* 6*16=96px */;
+  line-height: 1;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  grid-column: 1/4; /* pega o titulo de ponta a ponta que esta dentro da classe grid-section */
+}
+
+.animais h2 {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  color: #e54;
+}
+
+.animais h2::before {
+  content: "";
+  display: inline-block; /* pra ficar na mesma linha que o h2 */
+  width: 40px;
+  height: 10px;
+  margin-right: 10px;
+  background-color: #fb5;
+}
+
+.animais p {
+  font-family: Helvetica, Arial;
+  line-height: 1.2;
+  margin: 1rem;
+  margin-bottom: 1rem;
+}
+
+.animais-lista {
+  height: 370px;
+  overflow-y: scroll; /* o conteúdo que estourar no eixo y é pra colocar em scroll */
+  grid-column: 2; /* está na coluna 2 */
+}
+
+.animais-lista li {
+  cursor: pointer; /* deixa clicável as imagens */
+}
+
+/* estiliza a barra de scroll */
+.animais-lista::-webkit-scrollbar {
+  width: 18px;
+}
+
+/* estiliza o conteúdo da barra de scroll */
+.animais-lista::-webkit-scrollbar-thumb {
+  background: #fb5;
+  border-left: 4px solid #faf6ec;
+  border-right: 4px solid #faf6ec;
+}
+
+/* estiliza o fundo da barra de scroll */
+.animais-lista::-webkit-scrollbar-track {
+  background: #faf6ec;
+}
+
+/* já estava certo mas é bom especificar pra não acontecer nenhum bug */
+.animais-descricao {
+  grid-column: 3; /* está na coluna 3 */
+}
+
+.animais-descricao section {
+  margin-bottom: 3rem;
+}
+
+.faq-lista {
+  grid-column: 2 / 4; /* pega da 2 coluna até a 4 */
+}
+
+.faq-lista dt {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: bold;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  color: #e54;
+}
+
+.faq-lista dt::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 10px;
+  margin-right: 10px;
+  background: #fb5;
+}
+
+.faq-lista dd {
+  font-family: Helvetica, Arial;
+  margin-bottom: 0.5rem;
+  margin-left: 30px;
+}
+
+.mapa {
+  grid-column: 2; /* fica na segunda coluna */
+}
+
+.dados {
+  grid-column: 3;
+}
+
+.dados li {
+  margin-bottom: 1rem;
+  font-family: Helvetica, Arial;
+}
+
+.dados li:before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 10px;
+  margin-right: 10px;
+  background: #fb5;
+}
+
+.copy {
+  grid-column: 3/5;
+  margin-bottom: 2rem;
+  background: #fb5;
+}
+
+.copy p {
+  padding: 20px;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: bold;
+}
+
+/* responsivo */
+@media (max-width: 700px) {
+  .grid-container {
+    grid-template-columns: 1fr; /* vai ter somente uma coluna */
+  }
+  .menu,
+  .grid-section,
+  .copy {
+    grid-column: 1; /* vão se manter em uma coluna se não as classes irão forçar a criar uma como está padronizado no tamanho normal. */
+  }
+  .grid-section {
+    grid-template-columns: 100px 1fr; /* irá ter 2 colunas uma de 100px e outra de 1fr (1 fr ele se expande até onde conseguir)*/
+    grid-gap: 10px;
+  }
+  .animais-lista {
+    grid-column: 1; /* se posiciona na coluna 1 */
+  }
+  .faq-lista,
+  .dados,
+  .mapa {
+    grid-column: 1/3; /* vão pegar de ponta a ponta (como foi  definido acima duas colunas de 100px e 1fr temos 3 pontos, ponto inicial, meio, final) */
+  }
+  .grid-section h1 {
+    font-size: 3rem;
+  }
+  .menu {
+    margin-top: 0px;
+  }
+  .copy {
+    margin-bottom: 0px;
+  }
+}
+
+/* some o conteúdo */
+.js .js-tabcontent section {
+  display: none;
+}
+
+/* quando clicar na imagem a classe ativo irá ser ativada */
+.js-tabcontent section.ativo {
+  display: block !important;
+  animation: show 0.5s forwards;
+  /* forwards se não colocar ela volta pro estado inicial */
+}
+.js-tabcontent section.ativo.show-right {
+  animation: show-right 0.5s forwards;
+}
+.js-tabcontent section.ativo.show-down {
+  animation: show-down 0.5s forwards;
+}
+
+/* animação com css */
+/* show(mostrar) */
+/* faz a animação da esquerda pra direita */
+@keyframes show-right {
+  /* from(a partir de) */
+  from {
+    opacity: 0;
+    transform: translate3d(-30px, 0, 0); /*eixo (x, y, z)*/
+  }
+  /* to(para) */
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* faz a animação de cima pra baixo */
+@keyframes show-down {
+  /* from(a partir de) */
+  from {
+    opacity: 0;
+    transform: translate3d(0, -30px, 0); /*eixo (x, y, z)*/
+  }
+  /* to(para) */
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.js [data-anime="accordion"] dd {
+  display: none;
+}
+
+[data-anime="accordion"] dt::after {
+  content: "⬎";
+  margin-left: 10px;
+}
+
+[data-anime="accordion"] dt.ativo::after {
+  content: "⬏";
+  margin-left: 10px;
+}
+
+[data-anime="accordion"] dd.ativo {
+  display: block;
+  animation: slideDown 0.5s forwards;
+}
+/* slideDown(deslize para baixo) */
+@keyframes slideDown {
+  /* from(a partir de) */
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  /* to(para) */
+  to {
+    opacity: 1;
+    max-height: 200px;
+  }
+}
+
+.js .js-scroll {
+  opacity: 0;
+  transform: translate3d(-30px, 0, 0);
+  transition: 0.3s;
+}
+
+.js .js-scroll.ativo {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
