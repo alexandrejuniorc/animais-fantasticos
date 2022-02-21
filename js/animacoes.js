@@ -14,9 +14,13 @@ function initTabNav() {
     //função para ativar a classe selecionada
     function activeTab(index) {
       tabContent.forEach((section) => {
-        section.classList.remove("ativo"); //remove a classe ativo quando é acionado em outra seção
+        section.classList.remove("ativo");
+        //remove a classe ativo quando é acionado em outra seção
       });
-      tabContent[index].classList.add("ativo"); //adiciona a classe ativo ao tabContent quando é acionado ele no site
+      const direcao = tabContent[index].dataset.anime;
+      //adiciona variável que irá ser utilizada pra alterar a direção do objeto
+      tabContent[index].classList.add("ativo", direcao);
+      //adiciona a classe ativo ao tabContent quando é acionado ele no site
     }
     // fez um loop pra cada item da li
     // tem os argumentos itemMenu(item especifico do loop) e o argumento index
@@ -35,13 +39,16 @@ initTabNav();
 //função que ativa o faq quando ele é clicado
 function initAccordion() {
   //cria uma variável para as perguntas do FAQ
-  const accordionList = document.querySelectorAll(".js-accordion dt");
+  const accordionList = document.querySelectorAll(
+    "[data-anime='accordion'] dt"
+  );
   //quando uma variável é muito repetida é bom declarar ela para que não haja nenhum problema
   const activeClass = "ativo";
   if (accordionList.length) {
     //faz o primeiro item ficar ativo
     accordionList[0].classList.add(activeClass);
-    accordionList[0].nextElementSibling.classList.add(activeClass); //seleciona o próximo item
+    accordionList[0].nextElementSibling.classList.add(activeClass);
+    //seleciona o próximo item
 
     function activeAccordion() {
       this.classList.toggle(activeClass);
@@ -59,7 +66,9 @@ initAccordion();
 
 //a função faz com que tenha um scroll suave quando clica em um link interno, assim levando para a seção indicada
 function initScrollSuave() {
-  const linksInternos = document.querySelectorAll(".js-menu a[href^='#']");
+  const linksInternos = document.querySelectorAll(
+    "[data-menu='suave'] a[href^='#']"
+  );
 
   function scrollToSection(event) {
     event.preventDefault();
@@ -110,7 +119,8 @@ function initAnimacaoScroll() {
     }
     //ativa a função se não irá ficar vazio a tela quando o usuário acessar
     animaScroll();
-    window.addEventListener("scroll", animaScroll); //toda vez que uso o scroll essa função é ativada
+    window.addEventListener("scroll", animaScroll);
+    //toda vez que uso o scroll essa função é ativada
   }
 }
 

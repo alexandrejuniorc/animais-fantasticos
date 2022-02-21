@@ -238,12 +238,20 @@ body {
 /* quando clicar na imagem a classe ativo irá ser ativada */
 .js-tabcontent section.ativo {
   display: block !important;
-  animation: show 0.5s forwards; /* forwards se não colocar ela volta pro estado inicial */
+  animation: show 0.5s forwards;
+  /* forwards se não colocar ela volta pro estado inicial */
+}
+.js-tabcontent section.ativo.show-right {
+  animation: show-right 0.5s forwards;
+}
+.js-tabcontent section.ativo.show-down {
+  animation: show-down 0.5s forwards;
 }
 
 /* animação com css */
 /* show(mostrar) */
-@keyframes show {
+/* faz a animação da esquerda pra direita */
+@keyframes show-right {
   /* from(a partir de) */
   from {
     opacity: 0;
@@ -256,21 +264,35 @@ body {
   }
 }
 
-.js .js-accordion dd {
+/* faz a animação de cima pra baixo */
+@keyframes show-down {
+  /* from(a partir de) */
+  from {
+    opacity: 0;
+    transform: translate3d(0, -30px, 0); /*eixo (x, y, z)*/
+  }
+  /* to(para) */
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.js [data-anime="accordion"] dd {
   display: none;
 }
 
-.js-accordion dt::after {
+[data-anime="accordion"] dt::after {
   content: "⬎";
   margin-left: 10px;
 }
 
-.js-accordion dt.ativo::after {
+[data-anime="accordion"] dt.ativo::after {
   content: "⬏";
   margin-left: 10px;
 }
 
-.js-accordion dd.ativo {
+[data-anime="accordion"] dd.ativo {
   display: block;
   animation: slideDown 0.5s forwards;
 }
