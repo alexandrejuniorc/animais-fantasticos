@@ -15,7 +15,10 @@ export default function initAnimacaoScroll() {
         //se a section for visível ela subtrai sectionTop de windowMetade e tem que ser menor que 0
         const isSectionVisible = sectionTop - windowMetade < 0;
         if (isSectionVisible) section.classList.add("ativo");
-        else section.classList.remove("ativo");
+        //se conter ativo remove, se não conter não remove
+        else if (section.classList.contains("ativo")) {
+          section.classList.remove("ativo");
+        }
       });
     }
     //ativa a função se não irá ficar vazio a tela quando o usuário acessar
