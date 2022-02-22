@@ -1,7 +1,7 @@
 //essa função faz com que ocorra animações ao rola a página para baixo
 export default function initAnimacaoScroll() {
   //seleciona todas as classes onde possui .js-scroll
-  const sections = document.querySelectorAll(".js-scroll");
+  const sections = document.querySelectorAll("[data-anime='scroll']");
 
   if (sections.length) {
     //vai pegar o parâmetro da metade da tela
