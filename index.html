@@ -19,7 +19,12 @@
   <body>
     <div class="grid-container">
       <nav class="menu" data-menu="suave">
-        <ul>
+        <!-- aria-expanded serve para dizer que o conteúdo logo abaixo do botão não foi removido mas sim escondido -->
+        <!-- aria-controls serve para dizer oq ele está controlando, que no caso é o menu -->
+        <button data-menu="button" aria-expanded="false" aria-controls="menu">
+          Menu
+        </button>
+        <ul data-menu="list" id="menu">
           <li><a href="#animais">Animais</a></li>
           <li data-dropdown>
             <a href="sobre.html">Sobre</a>

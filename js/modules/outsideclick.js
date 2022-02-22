@@ -9,7 +9,8 @@ export default function outsideClick(element, events, callback) {
    */
   if (!element.hasAttribute(outside)) {
     events.forEach((userEvent) => {
-      html.addEventListener(userEvent, handleOutsideClick);
+      //foi preciso usar o setTimeout por conta fase de bubble assim deixando o evento assíncrono, pois ele irá ficar na fila de ações
+      setTimeout(() => html.addEventListener(userEvent, handleOutsideClick));
     });
     element.setAttribute(outside, "");
   }

@@ -1,0 +1,66 @@
+/* o botão menu no layout desktop irá ser desabilitado */
+[data-menu="button"] {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  /* posicionamento do botão menu */
+  .js [data-menu="button"] {
+    display: flex;
+    background: #222;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    margin: 10px;
+    align-items: center;
+    /* position e z-index adicionados para ficar acima do menu-mobile criado */
+    position: relative;
+    z-index: 300;
+  }
+
+  /* criação do menu hamburguer */
+  .js [data-menu="button"]::before {
+    margin-right: 4px;
+    content: "";
+    display: inline-block;
+    height: 2px;
+    width: 12px;
+    background: white;
+    /* macete pra fazer o menu hamburguer com box-shadow */
+    box-shadow: 0 4px white, 0 -4px white;
+    transition: transform 0.3s; /* animação para quando clicar no menu hamburguer para ele ser aberto */
+  }
+
+  /* quando o botão estiver ativo o before irá ter uma animação */
+  .js [data-menu="button"].active::before {
+    transform: rotate(90deg);
+  }
+
+  /* estilização do menu mobile */
+  .js [data-menu="list"] {
+    display: none;
+    position: absolute; /* posicionamento absoluto pois quero que vá acima de tudo */
+    background: #fb5;
+    width: 160px;
+    z-index: 200; /* z-index pra ficar por cima dos outros itens */
+    padding: 60px 0 20px 0;
+    top: 0;
+    box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .js [data-menu="list"].active {
+    /* display block pra ficar um item embaixo do outro */
+    display: block;
+    animation: show-right 0.3s forwards;
+  }
+
+  .js .dropdown-menu {
+    position: static; /* posição normal ao invés de position absolute, com o static ele ficará dentro do menu-mobile */
+    border: none;
+  }
+}
