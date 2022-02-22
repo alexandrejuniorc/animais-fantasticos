@@ -4,7 +4,8 @@ import outsideClick from "./outsideclick.js";
 export default function initMenuMobile() {
   const menuButton = document.querySelector('[data-menu="button"]');
   const menuList = document.querySelector('[data-menu="list"]');
-  const eventos = ["click", "touchstart"];
+  const eventos = ["click"];
+  //"touchstart" é um evento de click para celular porém estava bugando o menu
 
   //condição para não bugar o js e irá adicionar somente se tiver o menuButton
   if (menuButton) {
